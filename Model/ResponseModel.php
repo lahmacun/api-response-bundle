@@ -2,119 +2,160 @@
 
 namespace App\Lahmacun\APIResponseBundle\Model;
 
-class ResponseModel {
-	/**
-	 * @var $status ResponseStatusModel
-	 */
-	private $status;
+class ResponseModel
+{
+  /**
+   * @var ResponseStatusModel
+   */
+  private $status;
 
-	/**
-	 * @var $code ResponseCodeModel
-	 */
-	private $code;
+  /**
+   * @var ResponseCodeModel
+   */
+  private $code;
 
-	/**
-	 * @var $messages string[]
-	 */
-	private $messages;
+  /**
+   * @var string[]
+   */
+  private $messages;
 
-	/**
-	 * @var $resources object[]
-	 */
-	private $resources;
+  /**
+   * @var object[]
+   */
+  private $resources;
 
-	/**
-	 * @var $action ResponseActionModel
-	 */
-	private $action;
+  /**
+   * @var ResponseActionModel
+   */
+  private $action;
 
-	/**
-	 * @return ResponseStatusModel
-	 */
-	public function getStatus(): ResponseStatusModel {
-		return $this->status;
-	}
+  /**
+   * @var int
+   */
+  private $httpStatusCode;
 
-	/**
-	 * @param ResponseStatusModel $status
-	 *
-	 * @return ResponseModel
-	 */
-	public function setStatus( ResponseStatusModel $status ): ResponseModel {
-		$this->status = $status;
+  /**
+   * @return ResponseStatusModel
+   */
+  public function getStatus(): ResponseStatusModel
+  {
+    return $this->status;
+  }
 
-		return $this;
-	}
+  /**
+   * @param ResponseStatusModel $status
+   *
+   * @return ResponseModel
+   */
+  public function setStatus(ResponseStatusModel $status): ResponseModel
+  {
+    $this->status = $status;
 
-	/**
-	 * @return ResponseCodeModel
-	 */
-	public function getCode(): ResponseCodeModel {
-		return $this->code;
-	}
+    return $this;
+  }
 
-	/**
-	 * @param ResponseCodeModel $code
-	 *
-	 * @return ResponseModel
-	 */
-	public function setCode( ResponseCodeModel $code ): ResponseModel {
-		$this->code = $code;
+  /**
+   * @return ResponseCodeModel
+   */
+  public function getCode(): ResponseCodeModel
+  {
+    return $this->code;
+  }
 
-		return $this;
-	}
+  /**
+   * @param ResponseCodeModel $code
+   *
+   * @return ResponseModel
+   */
+  public function setCode(ResponseCodeModel $code): ResponseModel
+  {
+    $this->code = $code;
 
-	/**
-	 * @return string[]
-	 */
-	public function getMessages(): array {
-		return $this->messages;
-	}
+    return $this;
+  }
 
-	/**
-	 * @param string[] $messages
-	 *
-	 * @return ResponseModel
-	 */
-	public function setMessages( array $messages ): ResponseModel {
-		$this->messages = $messages;
+  /**
+   * @return string[]
+   */
+  public function getMessages(): array
+  {
+    return $this->messages;
+  }
 
-		return $this;
-	}
+  /**
+   * @param string[] $messages
+   *
+   * @return ResponseModel
+   */
+  public function setMessages(array $messages): ResponseModel
+  {
+    $this->messages = $messages;
 
-	/**
-	 * @return object[]
-	 */
-	public function getResources(): array {
-		return $this->resources;
-	}
+    return $this;
+  }
 
-	/**
-	 * @param object[] $resources
-	 *
-	 * @return ResponseModel
-	 */
-	public function setResources( array $resources ): ResponseModel {
-		$this->resources = $resources;
+  /**
+   * @return object[]
+   */
+  public function getResources(): array
+  {
+    return $this->resources;
+  }
 
-		return $this;
-	}
+  /**
+   * @param object[] $resources
+   *
+   * @return ResponseModel
+   */
+  public function setResources(array $resources): ResponseModel
+  {
+    $this->resources = $resources;
 
-	/**
-	 * @return ResponseActionModel
-	 */
-	public function getAction(): ResponseActionModel {
-		return $this->action;
-	}
+    return $this;
+  }
 
-	/**
-	 * @param ResponseActionModel $action
-	 *
-	 * @return ResponseModel
-	 */
-	public function setAction( ResponseActionModel $action ): ResponseModel {
-		$this->action = $action;
+  /**
+   * @return ResponseActionModel
+   */
+  public function getAction(): ResponseActionModel
+  {
+    return $this->action;
+  }
 
-		return $this;
-	}
+  /**
+   * @param ResponseActionModel $action
+   *
+   * @return ResponseModel
+   */
+  public function setAction(ResponseActionModel $action): ResponseModel
+  {
+    $this->action = $action;
+
+    return $this;
+  }
+
+  public function getHttpStatusCode()
+  {
+    switch ($this->getStatus()) {
+      case 1001:
+        return 201;
+        break;
+      case 1002:
+      case 1003:
+        return 200;
+        break;
+      case 2001:
+        return 401;
+        break;
+      case 2002:
+        return 201;
+        break;
+      case 2003:
+        return 201;
+        break;
+      case 2004:
+        return 201;
+        break;
+    }
+  }
 }
