@@ -5,12 +5,12 @@ namespace App\Lahmacun\APIResponseBundle\Model;
 class ResponseModel
 {
   /**
-   * @var ResponseStatusModel
+   * @var string
    */
   private $status;
 
   /**
-   * @var ResponseCodeModel
+   * @var string
    */
   private $code;
 
@@ -25,7 +25,7 @@ class ResponseModel
   private $resources;
 
   /**
-   * @var ResponseActionModel
+   * @var string
    */
   private $action;
 
@@ -35,19 +35,19 @@ class ResponseModel
   private $httpStatusCode;
 
   /**
-   * @return ResponseStatusModel
+   * @return string
    */
-  public function getStatus(): ResponseStatusModel
+  public function getStatus(): ?string
   {
     return $this->status;
   }
 
   /**
-   * @param ResponseStatusModel $status
+   * @param string $status
    *
    * @return ResponseModel
    */
-  public function setStatus(ResponseStatusModel $status): ResponseModel
+  public function setStatus(string $status): ResponseModel
   {
     $this->status = $status;
 
@@ -55,19 +55,19 @@ class ResponseModel
   }
 
   /**
-   * @return ResponseCodeModel
+   * @return string
    */
-  public function getCode(): ResponseCodeModel
+  public function getCode(): ?string
   {
     return $this->code;
   }
 
   /**
-   * @param ResponseCodeModel $code
+   * @param string $code
    *
    * @return ResponseModel
    */
-  public function setCode(ResponseCodeModel $code): ResponseModel
+  public function setCode(string $code): ResponseModel
   {
     $this->code = $code;
 
@@ -77,7 +77,7 @@ class ResponseModel
   /**
    * @return string[]
    */
-  public function getMessages(): array
+  public function getMessages(): ?array
   {
     return $this->messages;
   }
@@ -97,7 +97,7 @@ class ResponseModel
   /**
    * @return object[]
    */
-  public function getResources(): array
+  public function getResources(): ?array
   {
     return $this->resources;
   }
@@ -107,7 +107,7 @@ class ResponseModel
    *
    * @return ResponseModel
    */
-  public function setResources(array $resources): ResponseModel
+  public function setResources(?array $resources): ResponseModel
   {
     $this->resources = $resources;
 
@@ -115,28 +115,28 @@ class ResponseModel
   }
 
   /**
-   * @return ResponseActionModel
+   * @return string
    */
-  public function getAction(): ResponseActionModel
+  public function getAction(): ?string
   {
     return $this->action;
   }
 
   /**
-   * @param ResponseActionModel $action
+   * @param string $action
    *
    * @return ResponseModel
    */
-  public function setAction(ResponseActionModel $action): ResponseModel
+  public function setAction(string $action): ResponseModel
   {
     $this->action = $action;
 
     return $this;
   }
 
-  public function getHttpStatusCode()
+  public function getHttpStatusCode(): int
   {
-    switch ($this->getStatus()) {
+    switch ($this->getCode()) {
       case 1001:
         return 201;
         break;
@@ -148,14 +148,14 @@ class ResponseModel
         return 401;
         break;
       case 2002:
-        return 201;
-        break;
       case 2003:
-        return 201;
+        return 400;
         break;
       case 2004:
-        return 201;
+        return 404;
         break;
+      default:
+        return 200;
     }
   }
 }

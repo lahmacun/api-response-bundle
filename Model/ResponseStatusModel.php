@@ -2,7 +2,7 @@
 
 namespace App\Lahmacun\APIResponseBundle\Model;
 
-class ResponseStatusModel extends \SplType {
+class ResponseStatusModel {
 	const __default = self::Success;
 	const Success = 'success';
 	const Failure = 'failure';

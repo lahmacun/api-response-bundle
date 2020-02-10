@@ -2,7 +2,7 @@
 
 namespace App\Lahmacun\APIResponseBundle\Model;
 
-class ResponseActionModel extends \SplType {
+class ResponseActionModel {
 	const __default = NULL;
 	const Read = 'read';
 	const Update = 'update';

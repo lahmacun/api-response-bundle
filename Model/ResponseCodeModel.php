@@ -8,7 +8,7 @@
 
 namespace App\Lahmacun\APIResponseBundle\Model;
 
-class ResponseCodeModel extends \SplType {
+class ResponseCodeModel {
 	const __default = null;
 	const Created = 1001;
 	const Updated = 1002;
