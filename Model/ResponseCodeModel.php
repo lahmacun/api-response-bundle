@@ -10,6 +10,7 @@ namespace App\Lahmacun\APIResponseBundle\Model;
 
 class ResponseCodeModel {
 	const __default = null;
+	const Success = 1000;
 	const Created = 1001;
 	const Updated = 1002;
 	const Deleted = 1003;

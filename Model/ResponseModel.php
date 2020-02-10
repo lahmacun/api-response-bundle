@@ -140,6 +140,7 @@ class ResponseModel
       case 1001:
         return 201;
         break;
+      case 1000:
       case 1002:
       case 1003:
         return 200;
