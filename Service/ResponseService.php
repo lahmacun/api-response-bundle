@@ -40,10 +40,17 @@ class ResponseService {
     $this->response = $response;
   }
 
-	public function create() {
+	public function create($returnType = 'response') {
 	  $serializedData = $this->serializer->serialize($this->response, 'json');
-    return new Response($serializedData, $this->response->getHttpStatusCode(), [
-      'Content-Type' => 'application/json',
-    ]);
+	  switch ($returnType) {
+      case "response":
+        return new Response($serializedData, $this->response->getHttpStatusCode(), [
+          'Content-Type' => 'application/json',
+        ]);
+        break;
+      case "json":
+        return $serializedData;
+        break;
+    }
 	}
 }

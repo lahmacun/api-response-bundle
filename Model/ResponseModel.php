@@ -30,11 +30,6 @@ class ResponseModel
   private $action;
 
   /**
-   * @var int
-   */
-  private $httpStatusCode;
-
-  /**
    * @return string
    */
   public function getStatus(): ?string
